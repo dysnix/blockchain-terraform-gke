@@ -95,8 +95,3 @@ variable "GKE_NODES_IAM_BINDING" {
     "roles/stackdriver.resourceMetadata.writer"
   ]
 }
-
-variable "K8S_CONTEXT" {
-  default = ""
-  type    = string
-}
