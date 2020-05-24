@@ -4,7 +4,7 @@ resource "google_container_cluster" "gke_cluster_0" {
   provider       = google-beta
   project        = var.GCP_PROJECT_ID
   name           = var.GKE_CLUSTER_NAME
-  location       = var.GKE_MASTER_REGION
+  location       = var.GKE_REGIONAL? var.GKE_MASTER_REGION : var.GKE_MASTER_ZONE
   node_locations = var.GKE_NODE_LOCATIONS
 
   # We can't create a cluster with no node pool defined, but we want to use
@@ -64,7 +64,7 @@ resource "google_container_node_pool" "gke_pool_0" {
   depends_on = [google_container_cluster.gke_cluster_0]
   project    = var.GCP_PROJECT_ID
   name       = var.GKE_NODE_POOL_NAME
-  location   = var.GKE_MASTER_REGION
+  location   = var.GKE_REGIONAL? var.GKE_MASTER_REGION : var.GKE_MASTER_ZONE
   cluster    = google_container_cluster.gke_cluster_0.name
 
   //  this is default behavior

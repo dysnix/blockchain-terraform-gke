@@ -11,10 +11,19 @@ variable "GKE_CLUSTER_NAME" {
   type    = string
 }
 
-# there is no reason to have single zone GKE master, as regional master is free
 variable "GKE_MASTER_REGION" {
   default = ""
   type    = string
+}
+
+variable "GKE_MASTER_ZONE" {
+  default = ""
+  type    = string
+}
+
+variable "GKE_REGIONAL" {
+  default = false
+  type    = bool
 }
 
 variable "GKE_NODE_POOL_NAME" {
