@@ -1,5 +1,6 @@
 resource "google_container_cluster" "gke_cluster_0" {
   //  depends_on     = [google_project_service.container_svc]
+//  depends_on     = [google_kms_crypto_key_iam_binding.crypto_key_iam_binding_0]
   # we need beta provider to enable database_encryption
   provider       = google-beta
   project        = var.GCP_PROJECT_ID
@@ -47,10 +48,10 @@ resource "google_container_cluster" "gke_cluster_0" {
     }
   }
 
-  database_encryption {
-    state    = "ENCRYPTED"
-    key_name = google_kms_crypto_key.crypto_key_0.self_link
-  }
+//  database_encryption {
+//    state    = "ENCRYPTED"
+//    key_name = google_kms_crypto_key.crypto_key_0.self_link
+//  }
   min_master_version = "latest"
   timeouts {
     create = "30m"
