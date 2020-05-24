@@ -21,7 +21,7 @@ variable "GKE_MASTER_ZONE" {
   type    = string
 }
 
-variable "GKE_REGIONAL" {
+variable "GKE_MASTER_REGIONAL" {
   default = false
   type    = bool
 }
