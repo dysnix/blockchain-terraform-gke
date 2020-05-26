@@ -1,6 +1,7 @@
 resource "google_container_cluster" "gke_cluster_0" {
   //  depends_on     = [google_project_service.container_svc]
 //  depends_on     = [google_kms_crypto_key_iam_binding.crypto_key_iam_binding_0]
+  depends_on = [ google_compute_network.container_network, google_compute_subnetwork.container_subnetwork ]
   # we need beta provider to enable database_encryption
   provider       = google-beta
   project        = var.GCP_PROJECT_ID
