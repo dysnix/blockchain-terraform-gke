@@ -99,7 +99,9 @@ resource "google_container_node_pool" "gke_pool_0" {
     metadata = {
       disable-legacy-endpoints = "true"
     }
-
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform",
+    ]
     service_account = google_service_account.gke_nodes.email
   }
 }
